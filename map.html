@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>호텔 ↔ 관광지 근접도 · 상하이 2026.09</title>
+<style>
+:root{--bg:#fafafa;--card:#fff;--ink:#111;--sub:#6b6b6b;--line:#e3e3e3;--warn:#b23;
+ --c1:#2f4b7c; --c2:#0f7173; --c3:#b5651d; --c4:#7d5ba6; --c5:#4f7942;}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","맑은 고딕",
+ "Apple SD Gothic Neo","Noto Sans KR",Roboto,Arial,sans-serif;
+ font-size:15px;line-height:1.6;-webkit-text-size-adjust:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:22px 16px 70px}
+header{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:20px}
+h1{font-size:21px;margin:0 0 5px;letter-spacing:-.02em}
+.sub{color:var(--sub);font-size:13px;margin:0}
+.hotel{display:inline-block;margin-top:9px;font-size:13px;border:1px solid var(--ink);
+ padding:5px 11px;border-radius:2px;background:#fff}
+.hotel b{font-size:14px}
+.hotel span{color:var(--sub)}
+
+section{background:var(--card);border:1px solid var(--line);border-radius:3px;
+ padding:18px;margin-bottom:18px}
+h2{font-size:13px;margin:0 0 4px;letter-spacing:.06em;color:var(--sub);
+ text-transform:uppercase;font-weight:700}
+h2+.note{margin:0 0 14px;font-size:12.5px;color:var(--sub)}
+
+/* 성격 범례 */
+.cats{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.cats span{font-size:12px;padding:3px 10px 3px 8px;border-radius:14px;
+ background:#f4f4f4;color:#333;display:inline-flex;align-items:center;gap:6px}
+.cats i{width:10px;height:10px;border-radius:50%;display:inline-block}
+
+/* 지도 */
+.mapbox{width:100%;overflow-x:auto;margin-bottom:4px}
+svg.map{display:block;width:100%;height:auto;min-width:440px;max-width:660px;margin:0 auto}
+
+/* 번호 범례 그리드 */
+.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:5px 16px;
+ border-top:1px dashed var(--line);padding-top:14px;margin-top:6px}
+@media(max-width:760px){.keys{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:440px){.keys{grid-template-columns:1fr}}
+.key{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:1.5px 0}
+.key .kd{color:var(--sub);font-size:11.5px;margin-left:auto;
+ font-variant-numeric:tabular-nums;white-space:nowrap}
+.badge{flex:none;display:inline-block;width:20px;height:20px;line-height:20px;
+ text-align:center;border-radius:50%;color:#fff;font-size:11px;font-weight:700}
+.badge.o{background:#fff!important;line-height:17px;border:1.5px solid}
+
+/* 권역 카드 */
+.zones{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:820px){.zones{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.zones{grid-template-columns:1fr}}
+.zone{border:1px solid var(--line);border-radius:3px;padding:11px 12px;background:#fcfcfc}
+.zone .zh{font-size:12.5px;font-weight:700;letter-spacing:.02em;margin-bottom:2px}
+.zone .zc{font-size:11.5px;color:var(--sub);margin-bottom:9px}
+.zone ul{margin:0;padding:0;list-style:none;font-size:12.5px;line-height:1.9}
+.zone li{display:flex;align-items:center;gap:6px}
+.zone li i{width:8px;height:8px;border-radius:50%;flex:none}
+.zone li span{color:#999;font-size:11.5px;margin-left:auto;white-space:nowrap}
+.zone.z1{border-left:4px solid #111}
+.zone.z2{border-left:4px solid #666}
+.zone.z3{border-left:4px solid #aaa}
+.zone.z4{border-left:4px solid #ddd}
+
+/* 막대 */
+.bar{display:grid;grid-template-columns:158px 1fr 92px;gap:9px;align-items:center;
+ padding:3px 0;font-size:12.5px}
+@media(max-width:620px){.bar{grid-template-columns:118px 1fr 80px;font-size:11.5px;gap:6px}}
+.bar .bn{text-align:right;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .bn em{font-style:normal;color:var(--sub);font-size:11px;margin-right:4px}
+.bar .bt{height:15px;background:#eee;border-radius:2px}
+.bar .bt span{display:block;height:100%;border-radius:2px}
+.bar .bv{font-size:11.5px;color:var(--sub);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* 표 */
+.tblbox{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:700px;font-size:12.5px}
+th,td{border-bottom:1px solid var(--line);padding:7px 8px;text-align:left;vertical-align:top}
+th{font-size:11px;color:var(--sub);letter-spacing:.04em;text-transform:uppercase;
+ border-bottom:1.5px solid var(--ink);white-space:nowrap}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.walkable td{background:#f7f7f7}
+.zh{color:var(--sub);font-size:11px}
+.warncell{color:var(--warn)}
+
+footer{margin-top:26px;padding-top:14px;border-top:1px solid var(--line);
+ font-size:11.5px;color:var(--sub);line-height:1.75}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>호텔 ↔ 관광지 근접도</h1>
+  <p class="sub">2026년 9월 상하이 가족여행 · 가 볼 만한 곳 23곳이 숙소에서 얼마나 가까운지</p>
+  <div class="hotel">
+    기준점 &nbsp;<b>Rezen Meta Tree (구 24K 인터내셔널)</b>
+    <span>· 黄浦区福州路555号 · 숙소 후보</span>
+  </div>
+</header>
+
+<section>
+  <h2>① 실제 위치 관계</h2>
+  <p class="note">호텔을 중심으로 한 반경 3.5km 지도입니다. 원은 500m 간격, 위쪽이 북쪽이에요. 번호는 호텔에서 가까운 순서이고, 색은 관광지 성격입니다. 지도를 벗어나는 곳은 테두리에 방향만 표시했어요.</p>
+  <div class="cats" id="cats"></div>
+  <div class="mapbox"><svg class="map" id="map" viewBox="0 0 660 620" role="img"
+       aria-label="숙소 중심 반경 3.5km 관광지 배치도"></svg></div>
+  <div class="keys" id="keys"></div>
+</section>
+
+<section>
+  <h2>② 권역별 묶음</h2>
+  <p class="note">같은 칸에 있는 곳끼리는 하루에 묶어도 이동 부담이 거의 없습니다.</p>
+  <div class="zones" id="zones"></div>
+</section>
+
+<section>
+  <h2>③ 호텔에서 가는 데 걸리는 시간</h2>
+  <p class="note">가장 편한 수단 기준입니다. 걷기 최소화가 우선이라 900m를 넘으면 디디를 기본으로 잡되, 지하철이 15분 이상 빠를 때만 지하철로 계산했습니다.</p>
+  <div id="bars"></div>
+</section>
+
+<section>
+  <h2>④ 상세</h2>
+  <div class="tblbox">
+  <table>
+    <thead><tr>
+      <th>#</th><th>장소</th><th>성격</th><th>직선거리</th><th>도보</th>
+      <th>디디 (요금)</th><th>지하철</th><th>판정</th>
+    </tr></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+  </div>
+</section>
+
+<footer>
+  <p><b>거리</b>는 좌표 기준 직선거리이고, <b>이동 경로는 1.25배</b>를 곱해 추정했습니다. 도보 4.0km/h(부모님 보행 속도), 디디 시내 평균 20km/h + 배차 대기 4분, 지하철 역간 2.5분·환승 4분·승강장 대기 3분으로 계산했습니다.</p>
+  <p><b>요금</b>은 상하이 택시 2022년 개정 기준(기본 14위안·3km, 3~15km 2.7위안/km, 15km 초과 4.05위안/km)과 지하철 거리요금(6km 3위안·16km 4위안·이후 10km당 1위안)이며, 1위안 ≈ 215원으로 환산했습니다.</p>
+  <p><b>황푸강 선형과 관광지 좌표는 개략적인 위치</b>이고, 정밀 측량 지도가 아닙니다. 예원 일대처럼 서로 200m 안에 붙어 있는 곳은 <b>동그라미가 겹치지 않게 조금씩 밀어서</b> 그렸습니다. 방향과 거리 감각을 잡는 용도로만 쓰세요. 조사 기준일 2026-08-10.</p>
+  <p>인터넷 없이 동작합니다(외부 리소스 0개).</p>
+</footer>
+
+</div>
+
+<script>
+"use strict";
+
+var CATS = {
+  hist:{nm:"박물관·역사", col:"#2f4b7c"},
+  view:{nm:"야경·전망",   col:"#0f7173"},
+  food:{nm:"먹거리·시장", col:"#b5651d"},
+  walk:{nm:"거리·산책",   col:"#7d5ba6"},
+  out :{nm:"근교 나들이", col:"#4f7942"}
+};
+
+/* 기준점 — Rezen Meta Tree (구 24K), 黄浦区福州路555号 */
+var HOTEL = {lat:31.2330, lng:121.4800, st:"人民广场", stWalk:8};
+var HOTEL2 = {nm:"9/21 숙소 후보", lat:31.2350, lng:121.4755};
+
+var SPOTS = [
+ {nm:"난징동루 보행자거리", zh:"南京东路步行街", c:"walk", lat:31.2359, lng:121.4820, st:"南京东路", sw:1},
+ {nm:"윈난난루 미식거리",   zh:"云南南路",       c:"food", lat:31.2300, lng:121.4790, st:"大世界",   sw:3},
+ {nm:"인민공원·결혼시장",   zh:"人民公园",       c:"walk", lat:31.2333, lng:121.4700, st:"人民广场", sw:3},
+ {nm:"상하이박물관 본관",   zh:"上海博物馆",     c:"hist", lat:31.2290, lng:121.4750, st:"人民广场", sw:5},
+ {nm:"와이탄 야경",         zh:"外滩",           c:"view", lat:31.2397, lng:121.4903, st:"南京东路", sw:12},
+ {nm:"예원 상장 (시장)",    zh:"豫园商城",       c:"food", lat:31.2270, lng:121.4915, st:"豫园",     sw:5},
+ {nm:"성황묘",             zh:"城隍庙",         c:"hist", lat:31.2272, lng:121.4900, st:"豫园",     sw:5},
+ {nm:"예원 (정원)",         zh:"豫园",           c:"hist", lat:31.2277, lng:121.4922, st:"豫园",     sw:6},
+ {nm:"황푸강 유람선 부두",  zh:"十六铺码头",     c:"view", lat:31.2278, lng:121.4959, st:"豫园",     sw:15},
+ {nm:"와이탄 관광터널",     zh:"外滩观光隧道",   c:"view", lat:31.2410, lng:121.4930, st:"南京东路", sw:9},
+ {nm:"임시정부 청사",       zh:"临时政府旧址",   c:"hist", lat:31.2202, lng:121.4720, st:"一大会址·新天地", sw:3},
+ {nm:"신톈디",             zh:"新天地",         c:"walk", lat:31.2213, lng:121.4750, st:"一大会址·新天地", sw:3},
+ {nm:"자연사박물관",        zh:"上海自然博物馆", c:"hist", lat:31.2360, lng:121.4590, st:"自然博物馆", sw:1},
+ {nm:"난징시루 쇼핑거리",   zh:"南京西路",       c:"walk", lat:31.2300, lng:121.4560, st:"南京西路", sw:1},
+ {nm:"동방명주 타워",       zh:"东方明珠",       c:"view", lat:31.2397, lng:121.4998, st:"陆家嘴",   sw:5},
+ {nm:"상하이타워 118층",    zh:"上海中心大厦",   c:"view", lat:31.2336, lng:121.5057, st:"浦东南路", sw:3},
+ {nm:"톈즈팡",             zh:"田子坊",         c:"walk", lat:31.2110, lng:121.4680, st:"打浦桥",   sw:5},
+ {nm:"1933 라오창팡",       zh:"1933老场坊",     c:"walk", lat:31.2560, lng:121.4890, st:"海伦路",   sw:10},
+ {nm:"정안사",             zh:"静安寺",         c:"hist", lat:31.2237, lng:121.4451, st:"静安寺",   sw:3},
+ {nm:"우캉맨션",           zh:"武康大楼",       c:"walk", lat:31.2100, lng:121.4370, st:"交通大学", sw:6},
+ {nm:"상하이 과학기술관",   zh:"上海科技馆",     c:"hist", lat:31.2245, lng:121.5405, st:"上海科技馆", sw:3},
+ {nm:"치바오 고진",         zh:"七宝老街",       c:"out",  lat:31.1560, lng:121.3540, st:"七宝",     sw:8},
+ {nm:"주자자오 수향",       zh:"朱家角古镇",     c:"out",  lat:31.1110, lng:121.0530, st:"朱家角",   sw:20}
+];
+
+var LINES = {
+ "1":  ["上海火车站","汉中路","新闸路","人民广场","一大会址·黄陂南路","陕西南路","常熟路","衡山路","徐家汇"],
+ "2":  ["虹桥火车站","虹桥2号航站楼","淞虹路","北新泾","威宁路","娄山关路","中山公园","江苏路",
+        "静安寺","南京西路","人民广场","南京东路","陆家嘴","浦东南路","世纪大道","上海科技馆","世纪公园"],
+ "4":  ["大连路","临平路","海伦路","宝山路"],
+ "8":  ["曲阜路","人民广场","大世界","老西门","陆家浜路"],
+ "9":  ["陆家浜路","马当路","打浦桥","嘉善路","肇嘉浜路","徐家汇","宜山路","桂林路","漕河泾开发区","合川路","星中路","七宝"],
+ "10": ["海伦路","四川北路","天潼路","南京东路","豫园","老西门","一大会址·新天地","陕西南路","上海图书馆","交通大学","虹桥路"],
+ "12": ["天潼路","曲阜路","汉中路","南京西路","陕西南路","嘉善路","大木桥路"],
+ "13": ["汉中路","自然博物馆","南京西路","淮海中路","一大会址·新天地","马当路","世博会博物馆"],
+ "14": ["静安寺","一大会址·黄陂南路","大世界","豫园","陆家嘴","浦东南路"],
+ "17": ["虹桥火车站","诸光路","蟠龙路","徐盈路","徐泾北城","嘉松中路","赵巷","汇金路","青浦新城","漕盈路","淀山湖大道","朱家角"]
+};
+
+var WALK_KMH=4.0, CAR_KMH=20, CAR_WAIT=4, MET_HOP=2.5, MET_TRAN=4, MET_WAIT=3, DETOUR=1.25, KRW=215;
+
+function hav(a,b){var R=6371,dLat=(b.lat-a.lat)*Math.PI/180,dLng=(b.lng-a.lng)*Math.PI/180,
+ la1=a.lat*Math.PI/180,la2=b.lat*Math.PI/180;
+ var x=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.sin(dLng/2)*Math.sin(dLng/2)*Math.cos(la1)*Math.cos(la2);
+ return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));}
+function dur(m){m=Math.round(m);return m>=60?Math.floor(m/60)+"시간"+(m%60?" "+(m%60)+"분":""):m+"분";}
+function won(y){return Math.round(y*KRW/100)*100+"원";}
+function fareCar(km){var f=14;if(km>3)f+=(Math.min(km,15)-3)*2.7;if(km>15)f+=(km-15)*4.05;return Math.round(f);}
+function fareMetro(km){var f=km<=6?3:km<=16?4:5+Math.floor((km-16)/10);return Math.min(f,15);}
+
+function metroRoute(from,to){
+  if(!from||!to||from===to)return null;
+  var adj={};
+  function add(a,b,l){(adj[a]=adj[a]||[]).push({to:b,line:l});}
+  for(var ln in LINES){var a=LINES[ln];for(var i=0;i<a.length-1;i++){add(a[i],a[i+1],ln);add(a[i+1],a[i],ln);}}
+  if(!adj[from]||!adj[to])return null;
+  var best=null,seen={},q=[{at:from,line:null,hops:0,tr:0,path:[]}];
+  while(q.length){
+    q.sort(function(x,y){return (x.tr*10+x.hops)-(y.tr*10+y.hops);});
+    var c=q.shift();
+    if(c.at===to){best=c;break;}
+    if(c.hops>30)continue;
+    var k=c.at+"|"+c.line; if(seen[k])continue; seen[k]=1;
+    (adj[c.at]||[]).forEach(function(e){
+      var tr=c.tr+(c.line&&c.line!==e.line?1:0);
+      if(tr>2)return;
+      q.push({at:e.to,line:e.line,hops:c.hops+1,tr:tr,path:c.path.concat([{line:e.line}])});
+    });
+  }
+  if(!best)return null;
+  var lines=[],prev=null;
+  best.path.forEach(function(p){if(p.line!==prev){lines.push(p.line);prev=p.line;}});
+  return {hops:best.hops,tr:best.tr,lines:lines};
+}
+
+var DATA = SPOTS.map(function(s){
+  var straight=hav(HOTEL,s), km=straight*DETOUR;
+  var walkMin=km/WALK_KMH*60, carMin=km/CAR_KMH*60+CAR_WAIT, carFee=fareCar(km);
+  var r=metroRoute(HOTEL.st,s.st), met=null;
+  if(r) met={min:HOTEL.stWalk+MET_WAIT+r.hops*MET_HOP+r.tr*MET_TRAN+s.sw, fee:fareMetro(km),
+             txt:r.lines.join("→")+"호선 "+r.hops+"개 역"+(r.tr?" · 환승 "+r.tr+"회":" · 직통")};
+  var mode,best;
+  if(km<=0.9){mode="walk";best=walkMin;}
+  else if(met&&met.min+15<carMin){mode="metro";best=met.min;}
+  else {mode="car";best=carMin;}
+  return {s:s, col:CATS[s.c].col, straight:straight, km:km, walkMin:walkMin,
+          carMin:carMin, carFee:carFee, met:met, mode:mode, best:best};
+}).sort(function(a,b){return a.straight-b.straight;});
+DATA.forEach(function(d,i){d.no=i+1;});
+
+/* ── 성격 범례 ────────────────────────────────────────────── */
+document.getElementById("cats").innerHTML = Object.keys(CATS).map(function(k){
+  var n=DATA.filter(function(d){return d.s.c===k;}).length;
+  return '<span><i style="background:'+CATS[k].col+'"></i>'+CATS[k].nm+' '+n+'</span>';
+}).join("");
+
+/* ── ① 지도 ─────────────────────────────────────────────── */
+(function(){
+  var W=660,H=620,CX=330,CY=305,RKM=3.5,R=245,DOT=13;
+  var kx=111.32*Math.cos(HOTEL.lat*Math.PI/180), ky=110.57, S=R/RKM;
+  function proj(lat,lng){return {x:CX+(lng-HOTEL.lng)*kx*S, y:CY-(lat-HOTEL.lat)*ky*S};}
+
+  var o=['<rect x="0" y="0" width="'+W+'" height="'+H+'" fill="#fff"/>'];
+
+  /* 황푸강 (개략) */
+  var river=[[31.198,121.490],[31.210,121.496],[31.222,121.4985],[31.232,121.4975],
+             [31.240,121.4945],[31.2465,121.4915],[31.2495,121.4990],[31.2510,121.5100]];
+  o.push('<clipPath id="cp"><circle cx="'+CX+'" cy="'+CY+'" r="'+R+'"/></clipPath>');
+  o.push('<g clip-path="url(#cp)"><polyline points="'
+    + river.map(function(p){var q=proj(p[0],p[1]);return q.x.toFixed(1)+","+q.y.toFixed(1);}).join(" ")
+    + '" fill="none" stroke="#dde7ee" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/></g>');
+  var rl=proj(31.2205,121.4985);
+  o.push('<text x="'+rl.x.toFixed(1)+'" y="'+rl.y.toFixed(1)+'" font-size="11" fill="#9db0bd" '
+    + 'transform="rotate(-70 '+rl.x.toFixed(1)+' '+rl.y.toFixed(1)+')">黄浦江</text>');
+
+  /* 도보권 음영 + 거리 링 */
+  o.push('<circle cx="'+CX+'" cy="'+CY+'" r="'+(0.75*S).toFixed(1)+'" fill="#f4f4f4"/>');
+  [0.5,1,1.5,2,2.5,3,3.5].forEach(function(d){
+    var r=d*S;
+    o.push('<circle cx="'+CX+'" cy="'+CY+'" r="'+r.toFixed(1)+'" fill="none" stroke="#e6e6e6" '
+      + 'stroke-width="1"'+(d%1===0?'':' stroke-dasharray="3 4"')+'/>');
+    if(d%1===0||d===0.5)
+      o.push('<text x="'+(CX+5)+'" y="'+(CY-r+12).toFixed(1)+'" font-size="10" fill="#bbb">'+d+'km</text>');
+  });
+  o.push('<text x="'+CX+'" y="20" font-size="11" fill="#aaa" text-anchor="middle">북쪽 ↑</text>');
+
+  /* 좌표 계산 + 겹침 밀어내기 (원위치에서 최대 26px) */
+  var pts=[], outs=[];
+  DATA.forEach(function(d){
+    if(d.straight>RKM-0.06){ outs.push(d); return; }
+    var p=proj(d.s.lat,d.s.lng);
+    pts.push({d:d, x:p.x, y:p.y, ox:p.x, oy:p.y});
+  });
+  var MIN=DOT*2+3;
+  for(var it=0; it<200; it++){
+    for(var i=0;i<pts.length;i++) for(var j=i+1;j<pts.length;j++){
+      var a=pts[i], b=pts[j], dx=b.x-a.x, dy=b.y-a.y;
+      var dd=Math.sqrt(dx*dx+dy*dy)||0.01;
+      if(dd<MIN){
+        var push=(MIN-dd)/2, ux=dx/dd, uy=dy/dd;
+        a.x-=ux*push; a.y-=uy*push; b.x+=ux*push; b.y+=uy*push;
+      }
+    }
+    pts.forEach(function(p){
+      var dx=p.x-p.ox, dy=p.y-p.oy, dd=Math.sqrt(dx*dx+dy*dy);
+      if(dd>26){ p.x=p.ox+dx/dd*26; p.y=p.oy+dy/dd*26; }
+    });
+  }
+
+  /* 밀어낸 표시 — 원위치에 실선 점 + 연결선 */
+  pts.forEach(function(p){
+    var dx=p.x-p.ox, dy=p.y-p.oy;
+    if(Math.sqrt(dx*dx+dy*dy)>6){
+      o.push('<line x1="'+p.ox.toFixed(1)+'" y1="'+p.oy.toFixed(1)+'" x2="'+p.x.toFixed(1)
+        + '" y2="'+p.y.toFixed(1)+'" stroke="'+p.d.col+'" stroke-width="1" opacity=".35"/>');
+      o.push('<circle cx="'+p.ox.toFixed(1)+'" cy="'+p.oy.toFixed(1)+'" r="1.8" fill="'+p.d.col+'" opacity=".55"/>');
+    }
+  });
+
+  /* 9/21 숙소 후보 */
+  var h2=proj(HOTEL2.lat,HOTEL2.lng);
+  o.push('<circle cx="'+h2.x.toFixed(1)+'" cy="'+h2.y.toFixed(1)+'" r="6.5" fill="#fff" stroke="#111" stroke-width="2"/>');
+  o.push('<text x="'+h2.x.toFixed(1)+'" y="'+(h2.y-12).toFixed(1)+'" font-size="10" fill="#666" text-anchor="middle">9/21 후보</text>');
+
+  /* 마커 */
+  pts.forEach(function(p){
+    o.push('<circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="'+DOT+'" fill="'+p.d.col+'" stroke="#fff" stroke-width="2"/>');
+    o.push('<text x="'+p.x.toFixed(1)+'" y="'+(p.y+4).toFixed(1)+'" font-size="12" font-weight="700" '
+      + 'fill="#fff" text-anchor="middle">'+p.d.no+'</text>');
+  });
+
+  /* 지도 밖 — 테두리에 방향 표시 */
+  outs.forEach(function(d){
+    var dy=(d.s.lat-HOTEL.lat)*ky, dx=(d.s.lng-HOTEL.lng)*kx;
+    var ang=Math.atan2(dx,dy), rr=R+20;
+    var x=CX+Math.sin(ang)*rr, y=CY-Math.cos(ang)*rr;
+    x=Math.max(24,Math.min(W-24,x)); y=Math.max(38,Math.min(H-24,y));
+    o.push('<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+DOT+'" fill="#fff" stroke="'+d.col+'" stroke-width="2" stroke-dasharray="2.5 2.5"/>');
+    o.push('<text x="'+x.toFixed(1)+'" y="'+(y+4).toFixed(1)+'" font-size="12" font-weight="700" '
+      + 'fill="'+d.col+'" text-anchor="middle">'+d.no+'</text>');
+    o.push('<text x="'+x.toFixed(1)+'" y="'+(y+DOT+12).toFixed(1)+'" font-size="9.5" fill="#aaa" '
+      + 'text-anchor="middle">'+d.straight.toFixed(0)+'km</text>');
+  });
+
+  /* 호텔 */
+  o.push('<rect x="'+(CX-8)+'" y="'+(CY-8)+'" width="16" height="16" fill="#111"/>');
+  o.push('<rect x="'+(CX-12.5)+'" y="'+(CY-12.5)+'" width="25" height="25" fill="none" stroke="#111" stroke-width="1.5"/>');
+  o.push('<text x="'+CX+'" y="'+(CY+31)+'" font-size="12" font-weight="700" fill="#111" text-anchor="middle">숙소</text>');
+
+  document.getElementById("map").innerHTML=o.join("");
+})();
+
+/* ── 번호 범례 ────────────────────────────────────────────── */
+document.getElementById("keys").innerHTML = DATA.map(function(d){
+  var out = d.straight>3.44;
+  return '<div class="key">'
+    + '<span class="badge'+(out?" o":"")+'" style="'+(out?'color:'+d.col+';border-color:'+d.col:'background:'+d.col)+'">'+d.no+'</span>'
+    + '<span>'+d.s.nm+'</span><span class="kd">'+d.straight.toFixed(1)+'km</span></div>';
+}).join("");
+
+/* ── ② 권역 카드 ─────────────────────────────────────────── */
+(function(){
+  var Z=[
+    {c:"z1",h:"도보권",    s:"걸어서 10분 이내",      f:function(d){return d.km<=0.75;}},
+    {c:"z2",h:"도보 가능",  s:"걸어서 25분 이내",      f:function(d){return d.km>0.75&&d.km<=1.7;}},
+    {c:"z3",h:"차로 금방",  s:"디디·지하철 20분 이내", f:function(d){return d.km>1.7&&d.best<=20;}},
+    {c:"z4",h:"큰맘 먹고",  s:"편도 20분 이상",        f:function(d){return d.km>1.7&&d.best>20;}}
+  ];
+  document.getElementById("zones").innerHTML = Z.map(function(z){
+    var hit=DATA.filter(z.f);
+    return '<div class="zone '+z.c+'"><div class="zh">'+z.h+' · '+hit.length+'곳</div>'
+      + '<div class="zc">'+z.s+'</div><ul>'
+      + (hit.length ? hit.map(function(d){
+          return '<li><i style="background:'+d.col+'"></i>'+d.s.nm+'<span>'+dur(d.best)+'</span></li>';
+        }).join("") : '<li style="color:#aaa">없음</li>')
+      + '</ul></div>';
+  }).join("");
+})();
+
+/* ── ③ 막대 ──────────────────────────────────────────────── */
+(function(){
+  var max=Math.max.apply(null,DATA.map(function(d){return d.best;}));
+  document.getElementById("bars").innerHTML = DATA.map(function(d){
+    var lab=d.mode==="walk"?"도보":(d.mode==="metro"?"지하철":"디디");
+    var w=Math.max(1.4,d.best/max*100);
+    return '<div class="bar"><div class="bn"><em>'+d.no+'</em>'+d.s.nm+'</div>'
+      + '<div class="bt"><span style="width:'+w.toFixed(1)+'%;background:'+d.col+'"></span></div>'
+      + '<div class="bv">'+lab+' '+dur(d.best)+'</div></div>';
+  }).join("");
+})();
+
+/* ── ④ 표 ────────────────────────────────────────────────── */
+document.getElementById("tbody").innerHTML = DATA.map(function(d){
+  var v = d.km<=0.75 ? "걸어서 다녀올 수 있음"
+        : d.km<=1.7  ? "걸을 수 있으나 디디 권장"
+        : d.best<=20 ? "차·지하철로 금방"
+        : d.best<=45 ? "이동에 시간을 잡아야 함"
+        : "하루를 통째로 써야 함";
+  return '<tr'+(d.km<=0.75?' class="walkable"':'')+'>'
+    + '<td><span class="badge" style="background:'+d.col+'">'+d.no+'</span></td>'
+    + '<td>'+d.s.nm+'<br><span class="zh">'+d.s.zh+'</span></td>'
+    + '<td style="color:'+d.col+'">'+CATS[d.s.c].nm+'</td>'
+    + '<td class="n">'+d.straight.toFixed(1)+'km</td>'
+    + '<td class="n">'+(d.walkMin<=45?dur(d.walkMin):"—")+'</td>'
+    + '<td class="n">'+dur(d.carMin)+'<br><span class="zh">'+d.carFee+'위안 · '+won(d.carFee)+'</span></td>'
+    + '<td>'+(d.met?dur(d.met.min)+'<br><span class="zh">'+d.met.txt+' · '+d.met.fee+'위안</span>':'—')+'</td>'
+    + '<td'+(d.best>45?' class="warncell"':'')+'>'+v+'</td></tr>';
+}).join("");
+</script>
+</body>
+</html>
