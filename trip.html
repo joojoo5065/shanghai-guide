@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>상하이 2박 3일 · 2026.09.21–23</title>
+<style>
+:root{
+  --bg:#fafafa; --card:#ffffff; --line:#e6e6e6; --line2:#f0f0f0;
+  --ink:#1a1a1a; --sub:#5a5a5a; --mut:#8c8c8c;
+  --hi:#111111; --soft:#f4f4f4;
+}
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+html,body{margin:0; padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","맑은 고딕","Apple SD Gothic Neo",
+              "Helvetica Neue",Arial,"Noto Sans KR",sans-serif;
+  font-size:15px; line-height:1.62; letter-spacing:-0.01em;
+  -webkit-text-size-adjust:100%;
+}
+.wrap{max-width:760px; margin:0 auto; padding:0 16px 72px}
+
+/* ---------- header ---------- */
+header{padding:34px 0 20px; border-bottom:1px solid var(--line)}
+h1{margin:0 0 8px; font-size:25px; font-weight:700; letter-spacing:-0.03em; line-height:1.28}
+.sub{margin:0; color:var(--mut); font-size:13.5px; letter-spacing:0}
+.meta{display:flex; flex-wrap:wrap; gap:6px; margin-top:14px}
+.pill{
+  font-size:11.5px; color:var(--sub); background:var(--soft);
+  border:1px solid var(--line); border-radius:999px; padding:4px 10px; white-space:nowrap;
+}
+
+/* ---------- tabs ---------- */
+[role="tablist"]{
+  display:flex; gap:4px; position:sticky; top:0; z-index:20;
+  background:var(--bg); padding:12px 0 10px; margin-bottom:4px;
+  border-bottom:1px solid var(--line); overflow-x:auto; scrollbar-width:none;
+}
+[role="tablist"]::-webkit-scrollbar{display:none}
+[role="tab"]{
+  flex:1 0 auto; min-width:74px; appearance:none; cursor:pointer;
+  font:inherit; font-size:13.5px; font-weight:600; letter-spacing:-0.01em;
+  color:var(--mut); background:transparent; border:1px solid transparent;
+  border-radius:8px; padding:8px 12px; transition:background .12s,color .12s;
+}
+[role="tab"]:hover{color:var(--sub); background:var(--soft)}
+[role="tab"][aria-selected="true"]{color:#fff; background:var(--hi); border-color:var(--hi)}
+[role="tab"]:focus-visible{outline:2px solid var(--ink); outline-offset:2px}
+[role="tabpanel"]{padding-top:18px}
+[role="tabpanel"][hidden]{display:none}
+
+/* ---------- day head ---------- */
+.dayhead{margin:0 0 16px}
+.dayhead h2{margin:0 0 6px; font-size:19px; font-weight:700; letter-spacing:-0.02em}
+.dayhead .axis{margin:0; color:var(--mut); font-size:13px}
+.badges{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
+.badge{
+  font-size:11.5px; padding:3px 9px; border-radius:6px;
+  background:var(--soft); border:1px solid var(--line); color:var(--sub); white-space:nowrap;
+}
+
+/* ---------- timeline ---------- */
+.tl{list-style:none; margin:0; padding:0}
+.item{
+  background:var(--card); border:1px solid var(--line); border-radius:12px;
+  padding:14px 16px; margin-bottom:9px;
+}
+.item.rest{background:var(--soft); border-style:dashed}
+.item.key{border-color:#c9c9c9; border-width:1.5px}
+.t{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+.time{
+  font-size:12.5px; font-weight:700; color:var(--ink);
+  font-variant-numeric:tabular-nums; letter-spacing:0; white-space:nowrap;
+}
+.title{font-size:15.5px; font-weight:650; letter-spacing:-0.02em}
+.zh{font-size:12.5px; color:var(--mut); letter-spacing:0}
+.dur{margin-left:auto; font-size:11.5px; color:var(--mut); white-space:nowrap}
+.desc{margin:8px 0 0; color:var(--sub); font-size:13.5px}
+
+/* detail rows */
+.dl{margin:10px 0 0; padding:10px 12px; background:var(--soft); border-radius:8px}
+.dl div{display:flex; gap:8px; font-size:13px; color:var(--sub); margin-bottom:5px}
+.dl div:last-child{margin-bottom:0}
+.dl b{flex:0 0 44px; color:var(--ink); font-weight:650; font-size:12px; padding-top:1px}
+.warn b{color:#000}
+.dl.warn{background:#f2f2f2; border-left:3px solid #1a1a1a}
+
+/* move block */
+.move{
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  padding:7px 16px 13px; font-size:12.5px; color:var(--mut);
+}
+.mv{
+  font-size:11px; font-weight:650; color:var(--ink); background:#fff;
+  border:1px solid var(--line); border-radius:5px; padding:2px 7px; white-space:nowrap;
+}
+.arrow{color:#c4c4c4}
+
+/* ---------- cards ---------- */
+.card{
+  background:var(--card); border:1px solid var(--line);
+  border-radius:12px; padding:16px 18px; margin-bottom:12px;
+}
+.card h3{margin:0 0 12px; font-size:15px; font-weight:700; letter-spacing:-0.02em}
+.card h3 .n{color:var(--mut); font-weight:500; font-size:12.5px; margin-left:6px}
+table.kv{width:100%; border-collapse:collapse; font-size:13.5px}
+table.kv th{
+  text-align:left; font-weight:600; color:var(--mut); font-size:12.5px;
+  padding:7px 10px 7px 0; vertical-align:top; white-space:nowrap; width:96px;
+  border-bottom:1px solid var(--line2);
+}
+table.kv td{padding:7px 0; vertical-align:top; border-bottom:1px solid var(--line2); color:var(--sub)}
+table.kv tr:last-child th, table.kv tr:last-child td{border-bottom:none}
+table.kv td b{color:var(--ink); font-weight:650}
+
+/* chinese address block */
+.cn{
+  background:#111; color:#fff; border-radius:12px; padding:16px 18px; margin-bottom:12px;
+}
+.cn h3{margin:0 0 4px; font-size:13px; font-weight:600; color:#fff; letter-spacing:-0.01em}
+.cn p.hint{margin:0 0 14px; font-size:11.5px; color:#9a9a9a}
+.cnrow{padding:11px 0; border-top:1px solid #2e2e2e}
+.cnrow:first-of-type{border-top:none; padding-top:0}
+.cnrow .ko{font-size:11.5px; color:#9a9a9a; margin-bottom:4px}
+.cnrow .big{font-size:19px; font-weight:600; line-height:1.4; letter-spacing:0.01em; user-select:all}
+
+/* checklist */
+.chk{list-style:none; margin:0; padding:0}
+.chk li{border-bottom:1px solid var(--line2)}
+.chk li:last-child{border-bottom:none}
+.chk label{display:flex; gap:11px; align-items:flex-start; padding:10px 0; cursor:pointer; font-size:13.5px}
+.chk input{margin:3px 0 0; width:16px; height:16px; accent-color:#1a1a1a; flex:0 0 auto}
+.chk input:checked + span{color:var(--mut); text-decoration:line-through}
+.chk span{color:var(--sub)}
+
+ul.plain{margin:0; padding-left:17px; color:var(--sub); font-size:13.5px}
+ul.plain li{margin-bottom:6px}
+ul.plain li:last-child{margin-bottom:0}
+.note{font-size:12.5px; color:var(--mut); margin:10px 0 0}
+hr.sep{border:none; border-top:1px solid var(--line2); margin:14px 0}
+
+footer{margin-top:28px; padding-top:18px; border-top:1px solid var(--line); color:var(--mut); font-size:12px}
+
+@media (max-width:520px){
+  .wrap{padding:0 13px 64px}
+  h1{font-size:22px}
+  .title{font-size:14.8px}
+  table.kv th{width:80px; font-size:12px}
+  .cnrow .big{font-size:17.5px}
+  .dur{margin-left:0; flex-basis:100%}
+}
+
+/* ---------- print / PDF ---------- */
+.ponly{display:none}
+@media print{
+  @page{size:A4; margin:14mm 12mm}
+  html,body{background:#fff}
+  body{font-size:10.5pt; line-height:1.5}
+  .wrap{max-width:none; padding:0}
+  [role="tablist"]{display:none}
+  [role="tabpanel"][hidden]{display:block !important}
+  [role="tabpanel"]{break-before:page; padding-top:0}
+  #p1{break-before:auto}
+  .ponly{
+    display:block; margin:0 0 14px; font-size:17px; font-weight:700;
+    letter-spacing:-0.02em; padding-bottom:8px; border-bottom:2px solid #111;
+  }
+  header{padding-top:0; break-after:avoid}
+  .item,.card,.cn,.move,.dayhead,footer{break-inside:avoid}
+  .dayhead{break-after:avoid}
+  .item{border-color:#c8c8c8}
+  .item.rest{background:#f2f2f2}
+  .cn{background:#fff; color:#111; border:1.5px solid #111}
+  .cn h3{color:#111}
+  .cn p.hint{color:#666}
+  .cnrow{border-top-color:#ccc}
+  .cnrow .ko{color:#666}
+  .chk input{-webkit-appearance:none; appearance:none; border:1.5px solid #111; border-radius:3px; background:#fff}
+  .chk input:checked + span{color:var(--sub); text-decoration:none}
+  a{color:inherit; text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>상하이 2박 3일</h1>
+  <p class="sub">2026. 09. 21 (월) — 09. 23 (수) · 3인 (부모님 동행)</p>
+  <div class="meta">
+    <span class="pill">숙소 오렌지 호텔 셀렉트 위 가든</span>
+    <span class="pill">인천 08:50 → 푸둥 09:50</span>
+    <span class="pill">9/23 소주로 이동</span>
+    <span class="pill">환율 1위안 ≈ 215원</span>
+  </div>
+</header>
+
+<div role="tablist" aria-label="일정 탭">
+  <button role="tab" id="t1" aria-controls="p1" aria-selected="true">DAY 1</button>
+  <button role="tab" id="t2" aria-controls="p2" aria-selected="false" tabindex="-1">DAY 2</button>
+  <button role="tab" id="t3" aria-controls="p3" aria-selected="false" tabindex="-1">DAY 3</button>
+  <button role="tab" id="t4" aria-controls="p4" aria-selected="false" tabindex="-1">정보</button>
+  <button role="tab" id="t5" aria-controls="p5" aria-selected="false" tabindex="-1">준비</button>
+</div>
+
+<!-- ============ DAY 1 ============ -->
+<section role="tabpanel" id="p1" aria-labelledby="t1">
+  <div class="dayhead">
+    <h2>9/21 (월) · 도착 — 쇼핑과 강</h2>
+    <p class="axis">푸둥 도착 → 예원 일대 → 난징동루 → 황푸강 크루즈</p>
+    <div class="badges">
+      <span class="badge">걷기 약 2km</span>
+      <span class="badge">오후 휴식 2시간</span>
+      <span class="badge">월요일 = 박물관·임정청사 휴관</span>
+    </div>
+  </div>
+
+  <ul class="tl">
+    <li class="item">
+      <div class="t"><span class="time">09:50</span><span class="title">푸둥공항(PVG) 도착</span></div>
+      <p class="desc">입국심사 · 수하물 수령. 도착카드를 미리 작성해두면 심사가 크게 짧아집니다.</p>
+      <div class="dl warn"><div><b>주의</b><span>공항 밖에서 말 거는 호객 택시는 미터기의 2~3배입니다. 정식 승강장 · 디디 · 사전예약만 이용하세요.</span></div></div>
+    </li>
+    <div class="move"><span class="mv">사전예약 픽업 / 디디</span><span class="arrow">→</span><span>약 50km · 60분 · 약 200위안 (약 43,000원)</span></div>
+
+    <li class="item key">
+      <div class="t"><span class="time">12:30</span><span class="title">호텔 도착 · 짐 맡기기</span><span class="zh">人民路399号</span></div>
+      <p class="desc">체크인은 14:00부터입니다. 프런트에 짐을 맡기고 바로 점심을 드시면 됩니다.</p>
+      <div class="dl">
+        <div><b>확인</b><span>조식이 <b>객실당 2인</b>만 포함입니다. 1인 추가 구매가 되는지 체크인 때 물어보세요.</span></div>
+        <div><b>확인</b><span>&ldquo;침대 종류 임의배정&rdquo;이라 3인 잠자리가 정해져 있지 않습니다. 침대 구성을 명확히 요청하세요.</span></div>
+      </div>
+    </li>
+    <div class="move"><span class="mv">도보 3분</span><span class="arrow">→</span><span>예원상장 · 성황묘 일대</span></div>
+
+    <li class="item">
+      <div class="t"><span class="time">12:45</span><span class="title">점심 — 예원상장 일대</span><span class="zh">豫园商城</span><span class="dur">60분</span></div>
+      <p class="desc">도착 직후라 가까운 곳에서 가볍게. 저녁이 든든한 일정이라 여기서는 조절하시는 게 좋습니다.</p>
+      <div class="dl">
+        <div><b>먹거리</b><span>샤오롱바오 <b>난샹만터우뎬(南翔馒头店)</b> — 1층 테이크아웃 / 위층 착석. 부모님은 착석 권장</span></div>
+        <div><b>먹거리</b><span>성젠바오 · 닝보탕퇀 · 쑹웨러우(松月楼) 소식</span></div>
+        <div><b>주의</b><span>관광지 물가입니다. 고수(香菜)가 기본으로 들어가는 곳이 많습니다</span></div>
+      </div>
+    </li>
+    <div class="move"><span class="mv">도보 3분</span><span class="arrow">→</span><span>호텔</span></div>
+
+    <li class="item rest">
+      <div class="t"><span class="time">14:00</span><span class="title">체크인 · 휴식</span><span class="dur">2시간</span></div>
+      <p class="desc">새벽에 일어나 이동한 날입니다. 이 두 시간은 일정에 박아둔 것이니 그대로 쉬세요.</p>
+    </li>
+    <div class="move"><span class="mv">10호선 1정거장</span><span class="arrow">→</span><span>豫园 → 南京东路 · 약 3위안 · 도보 포함 15분</span></div>
+
+    <li class="item">
+      <div class="t"><span class="time">16:15</span><span class="title">난징동루 보행자거리</span><span class="zh">南京东路步行街</span><span class="dur">90분</span></div>
+      <p class="desc">상하이 대표 쇼핑거리. 기념품은 오늘 사두시는 게 좋습니다 — 9/23은 아침에 바로 출발합니다.</p>
+      <div class="dl">
+        <div><b>쇼핑</b><span><b>제일식품상점(第一食品商店)</b> — 따바이투 밀크캔디 · 차 · 과자. 기념품 한 곳에서 해결</span></div>
+        <div><b>간식</b><span><b>선다청(沈大成)</b> — 떡 · 전통 간식. 테이크아웃이라 부담 없습니다</span></div>
+        <div><b>간식</b><span><b>샤오양셩젠(小杨生煎)</b> — 성젠바오</span></div>
+      </div>
+      <div class="dl warn"><div><b>주의</b><span><b>찻집 사기</b> — 말을 걸어와 전통찻집으로 데려간 뒤 바가지를 씌우는 수법이 이 거리에 흔합니다. 먼저 다가와 영어로 말 거는 사람은 따라가지 마세요.</span></div></div>
+    </li>
+    <div class="move"><span class="mv">디디 8분</span><span class="arrow">→</span><span>약 15위안 (약 3,200원) · 十六铺2号码头</span></div>
+
+    <li class="item key">
+      <div class="t"><span class="time">17:55</span><span class="title">십육포 2호부두 · 티켓 교환</span><span class="zh">十六铺2号码头</span></div>
+      <p class="desc">中山东二路551号. 승선 30분 전 도착 기준입니다. 환표 · 보안검색 · 승선 줄을 감안한 시간입니다.</p>
+      <div class="dl warn">
+        <div><b>환표</b><span>17:00 이후에는 <b>551호(2구)</b>에서 교환합니다. 낮에는 481호(1구)라 다릅니다</span></div>
+        <div><b>마감</b><span>환표 마감 <b>20:00</b>. 늦은 항차를 타더라도 교환은 20시 전에 끝내야 합니다</span></div>
+      </div>
+    </li>
+
+    <li class="item key">
+      <div class="t"><span class="time">18:30</span><span class="title">황푸강 야간 크루즈</span><span class="zh">浦江游览</span><span class="dur">50분</span></div>
+      <p class="desc">앉아서 와이탄 만국건축군과 푸둥 스카이라인을 동시에 봅니다. 전망대처럼 줄 서서 서 있을 필요가 없습니다.</p>
+      <div class="dl">
+        <div><b>요금</b><span>온라인 145위안 (약 31,000원) / 현장 150위안 · <b>70세 이상 우대 있음</b> (여권 지참)</span></div>
+        <div><b>항차</b><span>16:30 / 18:30 / 19:45 / 21:00 — 실제 출항은 당일 부두 공고 기준</span></div>
+        <div><b>팁</b><span>승선 직후 2층 야외 갑판을 먼저 잡으면 사진이 훨씬 낫습니다</span></div>
+        <div><b>문의</b><span>021-63022220 (매일 16:00~21:00)</span></div>
+      </div>
+    </li>
+    <div class="move"><span class="mv">도보 5~10분</span><span class="arrow">→</span><span>金陵东路 일대</span></div>
+
+    <li class="item">
+      <div class="t"><span class="time">19:35</span><span class="title">저녁 — 진링동루 일대</span><span class="zh">金陵东路</span><span class="dur">85분</span></div>
+      <p class="desc">부두에서 걸어갈 거리입니다. 뒤에 일정이 없으니 시간에 쫓기지 않고 드시면 됩니다.</p>
+      <div class="dl">
+        <div><b>후보</b><span><b>강변성외 카오위(江边城外烤全鱼)</b> — 金陵东路점. 생선을 주문 후 굽기 때문에 20~30분 걸립니다. 이 자리는 기다려도 괜찮습니다</span></div>
+        <div><b>참고</b><span>난징동루 쪽 노포를 원하시면 <b>山西南路</b>(다후춘 · 샤오샤오싱 · 샤오진링) · <b>福建中路</b>(셴더라이)로. 단 <b>20:00~20:30 마감</b>이라 이 시간엔 이미 늦습니다</span></div>
+      </div>
+    </li>
+    <div class="move"><span class="mv">디디 8분</span><span class="arrow">→</span><span>약 15위안 · 호텔</span></div>
+
+    <li class="item">
+      <div class="t"><span class="time">21:15</span><span class="title">호텔 복귀</span></div>
+      <p class="desc">여력이 있으면 호텔 앞 예원상장 야경을 잠깐 보셔도 됩니다 — 도보 3분, 조명은 밤 10시경까지 켜져 있습니다. 상가 영업은 21:00에 끝나니 안쪽은 닫혀 있을 수 있습니다.</p>
+    </li>
+  </ul>
+
+  <div class="cn">
+    <h3>택시 · 디디 기사에게 보여주기</h3>
+    <p class="hint">글자를 길게 눌러 복사하면 디디 앱에 그대로 붙여넣을 수 있습니다.</p>
+    <div class="cnrow"><div class="ko">호텔</div><div class="big">桔子水晶上海外滩豫园酒店<br>黄浦区人民路399号</div></div>
+    <div class="cnrow"><div class="ko">난징동루 보행자거리</div><div class="big">南京东路步行街</div></div>
+    <div class="cnrow"><div class="ko">크루즈 부두</div><div class="big">十六铺2号码头<br>中山东二路551号</div></div>
+    <div class="cnrow"><div class="ko">저녁 (진링동루)</div><div class="big">金陵东路</div></div>
+  </div>
+</section>
+
+<!-- ============ DAY 2 ============ -->
+<section role="tabpanel" id="p2" aria-labelledby="t2" hidden>
+  <div class="dayhead">
+    <h2>9/22 (화) · 오전 자유 — 오후 투어</h2>
+    <p class="axis">임시정부 청사 → 신톈디 브런치 → 인민광장 집합</p>
+    <div class="badges">
+      <span class="badge">화요일 = 임정청사 개장</span>
+      <span class="badge">12:00 인민광장 집합</span>
+      <span class="badge">짐은 호텔에 두고</span>
+    </div>
+  </div>
+
+  <ul class="tl">
+    <li class="item">
+      <div class="t"><span class="time">08:00</span><span class="title">호텔 조식</span></div>
+      <p class="desc">2인분 포함입니다. 이 호텔은 볶음요리 등 중식 조식이 잘 나온다는 평이 많습니다.</p>
+    </li>
+    <div class="move"><span class="mv">10호선 2정거장</span><span class="arrow">→</span><span>豫园 → 老西门 → 一大会址·新天地 · 약 3위안 · 도보 포함 20분</span></div>
+
+    <li class="item key">
+      <div class="t"><span class="time">09:30</span><span class="title">대한민국 임시정부 청사</span><span class="zh">马当路306弄1号</span><span class="dur">45분</span></div>
+      <p class="desc">월요일 휴관이라 이번 여행에서 <b>오늘 오전이 유일한 기회</b>입니다. 신톈디에서 도보 200m입니다.</p>
+      <div class="dl warn">
+        <div><b>촬영</b><span><b>사진 · 영상 촬영 금지</b>입니다</span></div>
+        <div><b>시간</b><span>09:00~17:00 · <b>브레이크 11:30~13:30</b> — 오전에 가야 하는 이유입니다</span></div>
+        <div><b>요금</b><span>20위안 (약 4,300원)</span></div>
+      </div>
+    </li>
+    <div class="move"><span class="mv">도보</span><span class="arrow">→</span><span>신톈디 (인접)</span></div>
+
+    <li class="item">
+      <div class="t"><span class="time">10:30</span><span class="title">신톈디 — 브런치 · 산책</span><span class="zh">新天地</span><span class="dur">50분</span></div>
+      <p class="desc">석고문(石库门) 옛 건물을 개조한 거리입니다. 카페 · 브런치 가게가 많아 앉아서 쉬기에 좋습니다.</p>
+      <div class="dl">
+        <div><b>후보</b><span><b>점도덕(点都德)</b> 환위후이점 — 광둥 딤섬. 이 일대에 있습니다</span></div>
+        <div><b>참고</b><span>물가가 높은 편입니다. 브런치 · 커피 위주로 보시면 됩니다</span></div>
+      </div>
+    </li>
+    <div class="move"><span class="mv">도보 5~7분</span><span class="arrow">→</span><span>一大会址·黄陂南路역 (1호선)</span></div>
+
+    <li class="item key">
+      <div class="t"><span class="time">11:30</span><span class="title">인민광장으로 이동</span></div>
+      <p class="desc">신톈디는 역을 두 개 끼고 있습니다. <b>올 때는 10호선, 갈 때는 1호선</b>을 타면 호텔에 들르지 않고 바로 집합 장소로 갑니다.</p>
+      <div class="dl">
+        <div><b>경로</b><span>一大会址·<b>黄陂南路</b>역 → <b>1호선 1정거장</b> → 人民广场역 (약 3위안)</span></div>
+        <div><b>함정</b><span>一大会址·<b>新天地</b>(10·13호선)와 一大会址·<b>黄陂南路</b>(1·14호선)는 <b>이름만 비슷한 다른 역</b>입니다</span></div>
+      </div>
+      <div class="dl warn"><div><b>주의</b><span>인민광장역은 1·2·8호선 환승역이라 <b>매우 큽니다.</b> 출구가 20개 가까이 되고 개찰구에서 출구까지 5~10분 걸릴 수 있습니다. <b>집합 장소 출구 번호를 미리 확인</b>하세요.</span></div></div>
+    </li>
+
+    <li class="item key">
+      <div class="t"><span class="time">12:00</span><span class="title">투어 집합 — 인민광장역</span><span class="zh">人民广场站</span></div>
+      <p class="desc">오후 투어 시작. 이후 일정은 투어사 안내를 따릅니다.</p>
+    </li>
+  </ul>
+
+  <div class="cn">
+    <h3>택시 · 디디 기사에게 보여주기</h3>
+    <p class="hint">글자를 길게 눌러 복사하면 디디 앱에 그대로 붙여넣을 수 있습니다.</p>
+    <div class="cnrow"><div class="ko">임시정부 청사</div><div class="big">大韩民国临时政府旧址<br>马当路306弄1号</div></div>
+    <div class="cnrow"><div class="ko">신톈디</div><div class="big">新天地</div></div>
+    <div class="cnrow"><div class="ko">인민광장역</div><div class="big">人民广场站</div></div>
+    <div class="cnrow"><div class="ko">호텔로 돌아갈 때</div><div class="big">黄浦区人民路399号</div></div>
+  </div>
+</section>
+
+<!-- ============ DAY 3 ============ -->
+<section role="tabpanel" id="p3" aria-labelledby="t3" hidden>
+  <div class="dayhead">
+    <h2>9/23 (수) · 예원 아침산책 — 소주로</h2>
+    <p class="axis">예원 정원 → 체크아웃 → 기사 픽업 → 소주</p>
+    <div class="badges">
+      <span class="badge">체크아웃 12:00</span>
+      <span class="badge">예원까지 도보 3분</span>
+      <span class="badge">소주 약 100km · 1.5시간</span>
+    </div>
+  </div>
+
+  <ul class="tl">
+    <li class="item">
+      <div class="t"><span class="time">08:00</span><span class="title">호텔 조식</span></div>
+      <p class="desc">체크아웃 전에 짐을 미리 정리해두면 나중에 서두르지 않습니다.</p>
+    </li>
+    <div class="move"><span class="mv">도보 3분</span><span class="arrow">→</span><span>예원 입구</span></div>
+
+    <li class="item key">
+      <div class="t"><span class="time">09:00</span><span class="title">예원 정원</span><span class="zh">豫园</span><span class="dur">90분</span></div>
+      <p class="desc">명나라 때 조성된 강남 양식 정원입니다. 아침 시간대라 사람이 가장 적습니다. 호텔이 코앞이라 이 자리가 가장 여유롭습니다.</p>
+      <div class="dl">
+        <div><b>요금</b><span>40위안 (약 8,600원) · 09:00 개장</span></div>
+        <div><b>볼거리</b><span><b>위링룽(玉玲珑)</b> 태호석 · 대가산 · 용 담장 다섯 곳 · 점춘당</span></div>
+        <div><b>사진</b><span><b>구곡교(九曲桥)</b>와 호심정(湖心亭) — 정원 밖 상가 쪽입니다. 무료로 지나갈 수 있습니다</span></div>
+        <div><b>참고</b><span>정원(유료)과 예원상장(상가)은 다른 곳입니다. 시간이 남으면 상가 쪽도 둘러보세요</span></div>
+      </div>
+    </li>
+    <div class="move"><span class="mv">도보 3분</span><span class="arrow">→</span><span>호텔</span></div>
+
+    <li class="item">
+      <div class="t"><span class="time">10:45</span><span class="title">호텔 · 짐 정리</span></div>
+      <p class="desc">기념품은 여기서 캐리어에 넣으시면 됩니다. 소주까지 차로 이동하니 짐이 늘어도 부담은 적습니다.</p>
+    </li>
+
+    <li class="item key">
+      <div class="t"><span class="time">11:30</span><span class="title">체크아웃 · 기사 픽업</span><span class="zh">人民路399号</span></div>
+      <p class="desc">이 호텔은 자체 주차장이 있고 人民路가 넓은 도로라 차량 대기가 어렵지 않습니다.</p>
+      <div class="dl">
+        <div><b>퇴실</b><span>체크아웃 12:00 이전</span></div>
+        <div><b>픽업</b><span>기사에게 알려줄 주소 = <b>黄浦区人民路399号</b></span></div>
+      </div>
+    </li>
+
+    <li class="item">
+      <div class="t"><span class="time">12:00</span><span class="title">소주(苏州)로 이동</span><span class="zh">苏州</span><span class="dur">약 1.5시간</span></div>
+      <p class="desc">약 100km. 여기서부터는 이모님 일정입니다.</p>
+    </li>
+  </ul>
+
+  <div class="card">
+    <h3>9/26 귀국 — 기사님께 전달할 것</h3>
+    <table class="kv">
+      <tr><th>귀국편</th><td><b>9/26 (토) 상하이 푸둥(PVG) 13:40 출발</b> → 인천 약 16:40~17:00 도착</td></tr>
+      <tr><th>공항 도착</th><td>목표 <b>11:40</b> (출발 2시간 전)</td></tr>
+      <tr><th>소주 출발</th><td><b>08:30~09:00</b> 권장</td></tr>
+      <tr><th>거리</th><td>소주 → 푸둥공항 약 <b>134km</b> · 무정체 1시간 35분 / <b>실제 체감 2~2.5시간</b> / 정체 시 3시간 이상</td></tr>
+      <tr><th>참고</th><td>9/26은 중추절 연휴(9/25~27) 2일차입니다. 복귀 피크인 마지막 날은 피했지만 버퍼는 넉넉히 잡으세요</td></tr>
+    </table>
+    <p class="note">푸둥공항은 상하이 <b>동쪽 끝</b>이라 소주에서 가면 도심을 관통합니다. 훙차오공항보다 1시간 가까이 더 걸립니다.</p>
+  </div>
+</section>
+
+<!-- ============ 정보 ============ -->
+<section role="tabpanel" id="p4" aria-labelledby="t4" hidden>
+  <h2 class="ponly">정보 — 숙소 · 크루즈 · 요금 · 먹거리</h2>
+
+  <div class="card">
+    <h3>숙소 <span class="n">오렌지 호텔 셀렉트 상하이 위 가든</span></h3>
+    <table class="kv">
+      <tr><th>중국어</th><td><b>桔子水晶上海外滩豫园酒店</b></td></tr>
+      <tr><th>주소</th><td>黄浦区人民路399号 · No.399 Renmin Road, 황푸구</td></tr>
+      <tr><th>전화</th><td><b>+86-21-63335688</b></td></tr>
+      <tr><th>일정</th><td>체크인 <b>9/21 (월) 14:00 이후</b> / 체크아웃 <b>9/23 (수) 12:00 이전</b></td></tr>
+      <tr><th>객실</th><td>디럭스 패밀리 룸 · 정원 성인 3명 · 1실 2박</td></tr>
+      <tr><th>지하철</th><td><b>예원(豫园)역</b> 7번 출구 100m · 10호선 · 14호선</td></tr>
+    </table>
+    <hr class="sep">
+    <div class="dl warn">
+      <div><b>조식</b><span>9/22 · 9/23 각 <b>객실당 2인</b>만 포함 — 3인이므로 1명분이 빠집니다. <b>체크인 때 1인 추가 구매 가능한지 확인</b>하세요</span></div>
+      <div><b>침대</b><span>&ldquo;체크인 시 침대 종류 임의배정&rdquo; — 3인 잠자리가 보장되어 있지 않습니다. <b>체크인 때 침대 구성을 명확히 요청</b>하세요</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>이 호텔에서 걸어갈 수 있는 곳</h3>
+    <table class="kv">
+      <tr><th>도보 3분</th><td>예원 · 예원상장 · 성황묘 · 구곡교</td></tr>
+      <tr><th>도보 3분</th><td>예원역 (10호선 · 14호선) 7번 출구</td></tr>
+      <tr><th>약 1km</th><td>와이탄 남단</td></tr>
+      <tr><th>약 1.2km</th><td>십육포 부두 (크루즈)</td></tr>
+      <tr><th>10호선</th><td><b>북쪽 1정거장</b> 난징동루 / <b>남쪽 2정거장</b> 신톈디</td></tr>
+    </table>
+    <p class="note">호텔이 10호선 예원역에 붙어 있고, 난징동루와 신톈디가 같은 10호선 위에 있습니다. <b>이번 일정은 환승이 한 번도 없습니다.</b></p>
+  </div>
+
+  <div class="card">
+    <h3>황푸강 크루즈</h3>
+    <table class="kv">
+      <tr><th>부두</th><td><b>십육포 2호부두 (十六铺2号码头)</b> · 中山东二路551号</td></tr>
+      <tr><th>야간 항차</th><td><b>16:30 / 18:30 / 19:45 / 21:00</b> — 실제 출항은 당일 부두 공고 기준</td></tr>
+      <tr><th>소요</th><td>45~50분</td></tr>
+      <tr><th>요금</th><td>온라인 <b>145위안</b> (약 31,000원) / 현장 창구 150위안</td></tr>
+      <tr><th>우대</th><td><b>70세 이상 우대 요금</b> — 여권 지참</td></tr>
+      <tr><th>환표</th><td>11:00~17:00 → 481호(1구) / <b>17:00 이후 → 551호(2구)</b></td></tr>
+      <tr><th>환표 마감</th><td><b>20:00</b></td></tr>
+      <tr><th>도착</th><td>출발 <b>30분 전</b> 권장 (환표 + 보안검색 + 승선)</td></tr>
+      <tr><th>예약</th><td>Trip.com · Klook(한국어 가이드 옵션 상품 별도) · 마이리얼트립 · 위챗 미니프로그램 「黄浦江旅游官方票务平台」</td></tr>
+      <tr><th>문의</th><td><b>021-63022220</b> (매일 16:00~21:00) / 400-920-1278 (평일 09:30~17:00)</td></tr>
+    </table>
+    <p class="note">출발 전날 전화나 공식 미니프로그램으로 <b>실제 출항 시각</b>을 한 번 확인하세요. 계절 · 수위 · 날씨로 조정됩니다.</p>
+  </div>
+
+  <div class="card">
+    <h3>요금 기준 <span class="n">1위안 ≈ 215원</span></h3>
+    <table class="kv">
+      <tr><th>지하철</th><td>6km까지 3위안 · 16km까지 4위안 (약 650~860원)</td></tr>
+      <tr><th>디디 시내</th><td>단거리 약 15~20위안 (약 3,200~4,300원)</td></tr>
+      <tr><th>공항 이동</th><td>약 200위안 (약 43,000원) · 50km</td></tr>
+      <tr><th>택시 미터</th><td>기본 14위안(3km) · 이후 2.7위안/km · 야간(23~05시) 30% 할증</td></tr>
+      <tr><th>입장료</th><td>예원 40위안 · 임정청사 20위안 · 크루즈 145위안</td></tr>
+      <tr><th>식사</th><td>로컬 노포 인당 30~50위안 (약 6,500~11,000원)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>먹거리 후보</h3>
+    <ul class="plain">
+      <li><b>난샹만터우뎬(南翔馒头店)</b> — 예원 안. 샤오롱바오, 국가무형문화유산. 빨대로 육즙 먼저</li>
+      <li><b>점도덕(点都德)</b> — 광둥 딤섬. 환위후이점이 신톈디 · 화이하이루 일대</li>
+      <li><b>강변성외(江边城外烤全鱼)</b> — 카오위. 金陵东路점 · 世茂广场(난징동루)점</li>
+      <li><b>선다청(沈大成)</b> — 난징동루. 떡 · 전통 간식 테이크아웃</li>
+      <li><b>제일식품상점(第一食品商店)</b> — 난징동루. 기념품 한 곳에서 해결</li>
+      <li><b>사계민복(四季民福)</b> — 베이징덕. 외백도교점(吴淞路130号 · 10:30~21:30) · 香港广场점. <span style="color:var(--mut)">이번 일정에는 자리가 나오지 않습니다</span></li>
+    </ul>
+    <hr class="sep">
+    <p class="note"><b>노포 거리</b> — 옛 윈난난루(云南南路) 노포들은 재개발로 <b>山西南路</b>(다후춘 · 샤오샤오싱 · 샤오진링 · 훙창싱)와 <b>福建中路</b>(셴더라이 · 더싱관)로 이전했습니다. 난징동루 보행가 바로 옆입니다. <b>영업은 저녁 20:00~20:30에 끝납니다.</b></p>
+  </div>
+
+  <div class="card">
+    <h3>알아두기</h3>
+    <ul class="plain">
+      <li><b>중국은 호텔 일회용품 제공이 금지</b>되어 있습니다 — 칫솔 · 치약을 직접 챙기세요 <span style="color:var(--mut)">(이번 호텔은 바우처에 칫솔·치약 포함으로 표기되어 있습니다)</span></li>
+      <li>화장실은 백화점 · 호텔 로비가 확실합니다. 티슈와 손세정제를 챙기세요</li>
+      <li><b>팁 문화가 없습니다</b></li>
+      <li>물은 밀봉 생수만 드세요</li>
+      <li>차를 시키면 <b>차값(茶位费)</b>이 별도로 붙는 식당이 있습니다</li>
+      <li><b>고수(香菜)</b>가 기본으로 들어갑니다 — 빼려면 미리 말해야 합니다</li>
+    </ul>
+    <hr class="sep">
+    <table class="kv">
+      <tr><th>고수 빼고</th><td><b>不要香菜</b> 부야오 샹차이</td></tr>
+      <tr><th>맵지 않게</th><td><b>不要辣</b> 부야오 라</td></tr>
+      <tr><th>계산이요</th><td><b>结账</b> 지에장</td></tr>
+      <tr><th>포장이요</th><td><b>打包</b> 다바오</td></tr>
+      <tr><th>화장실은</th><td><b>洗手间在哪里?</b> 시서우지엔 짜이 날리</td></tr>
+      <tr><th>얼마예요</th><td><b>多少钱?</b> 뚜어사오 치엔</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 준비 ============ -->
+<section role="tabpanel" id="p5" aria-labelledby="t5" hidden>
+  <h2 class="ponly">준비 — 출국 전 체크리스트</h2>
+
+  <div class="card">
+    <h3>출국 전에만 할 수 있는 것</h3>
+    <p class="note" style="margin:0 0 12px">아래 네 가지는 <b>현지에 도착한 뒤에는 되돌릴 수 없습니다.</b> 특히 알리페이는 중국 내부 인터넷에서 본인인증 서버가 잘 되지 않습니다.</p>
+    <ul class="chk" id="prep">
+      <li><label><input type="checkbox" data-k="a1"><span><b>알리페이 설정</b> — 반드시 한국에서. 위챗페이보다 성공률이 높고, 알리페이가 되는 곳은 위챗페이도 됩니다</span></label></li>
+      <li><label><input type="checkbox" data-k="a2"><span><b>해외겸용 카드 등록</b> — 비자 · 마스터 · JCB 브랜드. 국내전용 카드는 불가</span></label></li>
+      <li><label><input type="checkbox" data-k="a3"><span><b>카드사에 해외결제 · 중국 사전등록</b> — 안 하면 위험거래로 막힙니다</span></label></li>
+      <li><label><input type="checkbox" data-k="a4"><span><b>알리페이 교통 QR 등록</b> — Transport 탭에서 상하이 교통 QR을 한 번 등록하면 개찰구에서 스캔만 하면 됩니다</span></label></li>
+      <li><label><input type="checkbox" data-k="b1"><span><b>eSIM 구매</b> — 중국 통신사는 관광객용 eSIM을 팔지 않아 현지 구매가 안 됩니다. 홍콩 경유 라우팅 상품이면 카톡 · 구글이 바로 됩니다</span></label></li>
+      <li><label><input type="checkbox" data-k="b2"><span>eSIM은 <b>전부 데이터 전용</b>입니다 (통화 · 문자 불가). VPN은 차단 · 탐지되므로 eSIM이 확실합니다</span></label></li>
+      <li><label><input type="checkbox" data-k="c1"><span><b>도착카드(China Arrival Card) 작성</b> — 탑승 전에. NIA 12367 앱 · 공식 웹 · 위챗/알리페이 미니프로그램. 입국심사가 최대 2시간에서 40분으로 줄어듭니다</span></label></li>
+      <li><label><input type="checkbox" data-k="d1"><span><b>크루즈 예약</b> — 9/21 18:30 항차 · 3인. 70세 이상 우대 확인</span></label></li>
+      <li><label><input type="checkbox" data-k="d2"><span><b>투어 집합 장소 확인</b> — 인민광장역 <b>몇 번 출구</b>인지</span></label></li>
+      <li><label><input type="checkbox" data-k="d3"><span><b>호텔 바우처 중국어본</b>을 폰에 저장 (프런트에 보여주기용)</span></label></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>짐 챙기기</h3>
+    <ul class="chk" id="pack">
+      <li><label><input type="checkbox" data-k="p1"><span>여권 · 여권 사본 <span style="color:var(--mut)">(크루즈 · 박물관에서 신분 확인)</span></span></label></li>
+      <li><label><input type="checkbox" data-k="p2"><span>칫솔 · 치약</span></label></li>
+      <li><label><input type="checkbox" data-k="p3"><span>휴대용 티슈 · 손세정제</span></label></li>
+      <li><label><input type="checkbox" data-k="p4"><span>보조배터리 <span style="color:var(--mut)">(지도 · QR 결제로 배터리가 빨리 닳습니다)</span></span></label></li>
+      <li><label><input type="checkbox" data-k="p5"><span>얇은 겉옷 1장 <span style="color:var(--mut)">(9월 하순, 무더위는 꺾였습니다)</span></span></label></li>
+      <li><label><input type="checkbox" data-k="p6"><span>부모님 상비약</span></label></li>
+      <li><label><input type="checkbox" data-k="p7"><span>편한 신발 <span style="color:var(--mut)">(하루 2~2.5km)</span></span></label></li>
+      <li><label><input type="checkbox" data-k="p8"><span>이 일정표를 폰에 저장 <span style="color:var(--mut)">(카톡 나에게 보내기 — 인터넷 없이도 열립니다)</span></span></label></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3>알아둘 것</h3>
+    <table class="kv">
+      <tr><th>비자</th><td><b>불필요</b> — 한국인 무비자 2026-12-31까지 연장 확정, 관광 30일</td></tr>
+      <tr><th>시차</th><td>한국보다 <b>1시간 느림</b></td></tr>
+      <tr><th>날씨</th><td>9월 하순은 태풍 위험이 크게 줄어드는 구간입니다. 출발 3~4일 전 예보를 다시 보세요</td></tr>
+      <tr><th>인파</th><td>9/21~23은 중추절 연휴(9/25~27) <b>직전 평일</b>이라 요금 · 인파 모두 유리합니다</td></tr>
+      <tr><th>지하철</th><td>역명 · 방송 · 매표기 모두 영어가 함께 나옵니다</td></tr>
+      <tr><th>디디</th><td><b>위챗 미니프로그램으로 이용 가능</b> — 별도 앱이나 중국 번호가 필요 없습니다. 영어 UI, 요금 선표시</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>출발 전 다시 확인할 것</h3>
+    <ul class="plain">
+      <li><b>노포 위치</b> — 山西南路 · 福建中路는 재개발에 따른 임시 영업지입니다. 윈난난루로 돌아갔을 수 있습니다</li>
+      <li><b>크루즈 출항 시각</b> — 021-63022220 (매일 16:00~21:00)</li>
+      <li><b>예원 개장 시간</b> — 계절 · 행사에 따라 조정됩니다</li>
+      <li><b>투어 집합 출구 번호</b></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  조사 기준 2026-08-15 · 요금 1위안 ≈ 215원<br>
+  요금과 운영시간은 변동될 수 있습니다. 출발 1~2주 전 다시 확인하세요.
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(tab){
+    tabs.forEach(function(t){
+      var on = (t === tab);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    window.scrollTo(0,0);
+  }
+  tabs.forEach(function(tab, i){
+    tab.addEventListener('click', function(){ select(tab); });
+    tab.addEventListener('keydown', function(e){
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if(!d) return;
+      e.preventDefault();
+      var n = tabs[(i + d + tabs.length) % tabs.length];
+      n.focus(); select(n);
+    });
+  });
+
+  var KEY = 'sh260921_final';
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e){}
+  var boxes = document.querySelectorAll('.chk input[type=checkbox]');
+  Array.prototype.forEach.call(boxes, function(b){
+    var k = b.getAttribute('data-k');
+    if(saved[k]) b.checked = true;
+    b.addEventListener('change', function(){
+      saved[k] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e){}
+    });
+  });
+})();
+</script>
+</body>
+</html>
